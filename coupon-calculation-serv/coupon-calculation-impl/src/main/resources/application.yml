@@ -1,0 +1,15 @@
+# 项目的启动端口
+server:
+  port: 20001
+  error:
+    include-message: always
+
+
+spring:
+  application:
+    name: coupon-calculation-serv
+
+
+logging:
+  level:
+    com.broadview.coupon: debug

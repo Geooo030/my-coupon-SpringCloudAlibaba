@@ -17,7 +17,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     # 连接池
     hikari:
-      pool-name: GeekbangCouponHikari
+      pool-name: geoCouponHikari
       connection-timeout: 5000
       idle-timeout: 30000
       maximum-pool-size: 10
