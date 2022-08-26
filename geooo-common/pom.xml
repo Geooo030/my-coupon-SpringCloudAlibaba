@@ -9,21 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>coupon-customer-api</artifactId>
+    <artifactId>geooo-common</artifactId>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>coupon-template-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
 
 
-    </dependencies>
 
 </project>

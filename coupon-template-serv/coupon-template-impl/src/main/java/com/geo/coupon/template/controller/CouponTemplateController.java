@@ -5,9 +5,12 @@ import com.geo.coupon.template.api.beans.CouponTemplateInfo;
 import com.geo.coupon.template.api.beans.PagedCouponTemplateInfo;
 import com.geo.coupon.template.api.beans.TemplateSearchParams;
 import com.geo.coupon.template.api.controller.CouponTemplateServiceApi;
+import com.geo.coupon.template.api.dto.GetTemplateInBatchDTO;
 import com.geo.coupon.template.service.intf.CouponTemplateService;
+import com.sun.istack.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -34,15 +37,15 @@ public class CouponTemplateController implements CouponTemplateServiceApi {
     }
 
     // 读取优惠券
-    public CouponTemplateInfo getTemplate(@RequestParam("id") Long id) {
+    public CouponTemplateInfo getTemplate(@NotNull @RequestBody Long id) {
         log.info("Load template, id={}", id);
         return couponTemplateService.loadTemplateInfo(id);
     }
 
     // 批量获取
-    public Map<Long, CouponTemplateInfo> getTemplateInBatch(@RequestParam("ids") Collection<Long> ids) {
-        log.info("getTemplateInBatch: {}", JSON.toJSONString(ids));
-        return couponTemplateService.getTemplateInfoMap(ids);
+    public Map<Long, CouponTemplateInfo> getTemplateInBatch(@Validated @RequestBody GetTemplateInBatchDTO dto) {
+        log.info("getTemplateInBatch: {}", JSON.toJSONString(dto.getIds()));
+        return couponTemplateService.getTemplateInfoMap(dto.getIds());
     }
 
     // 搜索模板
@@ -54,7 +57,7 @@ public class CouponTemplateController implements CouponTemplateServiceApi {
 
     // 优惠券无效化
     @DeleteMapping("/deleteTemplate")
-    public void deleteTemplate(@RequestParam("id") Long id) {
+    public void deleteTemplate(@RequestBody Long id) {
         log.info("Load template, id={}", id);
         couponTemplateService.deleteTemplate(id);
     }
