@@ -38,3 +38,6 @@ spring:
             group: EXT_GROUP
             # 自动刷新
             refresh: true
+          - dataId: sentinel-config.yml
+            group: EXT_GROUP
+            refresh: true

@@ -39,3 +39,6 @@ spring:
           - dataId: rabbitmq-config.yml
             group: EXT_GROUP
             refresh: true
+          - dataId: sentinel-config.yml
+            group: EXT_GROUP
+            refresh: true

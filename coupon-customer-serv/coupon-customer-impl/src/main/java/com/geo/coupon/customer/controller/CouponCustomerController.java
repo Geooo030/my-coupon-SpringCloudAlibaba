@@ -1,5 +1,6 @@
 package com.geo.coupon.customer.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.geo.coupon.calculation.api.beans.ShoppingCart;
 import com.geo.coupon.calculation.api.beans.SimulationOrder;
 import com.geo.coupon.calculation.api.beans.SimulationResponse;
@@ -24,6 +25,7 @@ public class CouponCustomerController {
     private CouponCustomerService customerService;
 
     @PostMapping("/requestCoupon")
+    @SentinelResource("customer-requestCoupon")
     public Coupon requestCoupon(@Valid @RequestBody RequestCoupon request) {
         return customerService.requestCoupon(request);
     }
