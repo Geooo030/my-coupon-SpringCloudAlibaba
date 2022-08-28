@@ -77,7 +77,7 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
 
         // 调用接口试算服务
 
-        return netUtils.postRequestPath("coupon-calculation-serv/calculator/simulate", order, SimulationOrder.class, SimulationResponse.class);
+        return couponCalculationServiceApi.simulate(order);
     }
 
     /**
@@ -101,8 +101,7 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
         List<Long> templateIds = coupons.stream()
                 .map(Coupon::getTemplateId)
                 .collect(Collectors.toList());
-        Map<Long, CouponTemplateInfo> templateMap = netUtils.getRequestPath("coupon-template-serv/template/getBatch",
-                "ids=" + templateIds.toString(), Map.class);
+        Map<Long, CouponTemplateInfo> templateMap = couponTemplateServiceApi.getTemplateInBatch(templateIds);
         coupons.stream().forEach(e -> e.setTemplateInfo(templateMap.get(e.getTemplateId())));
 
         return coupons.stream()
