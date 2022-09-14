@@ -1,2 +1,2 @@
-# my-coupon-SpringBoot
-优惠券项目单体SpringBoot实现
+
+优惠券项目微服务SpringCloudAlibaba
